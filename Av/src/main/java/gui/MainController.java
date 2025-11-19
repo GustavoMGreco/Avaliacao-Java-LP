@@ -4,25 +4,37 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import util.Util;
 
 import java.io.IOException;
 
 public class MainController {
 
-    // Método genérico para abrir novas janelas
-    private static void abrirJanela(String fxmlPath, String titulo) {
+    // Metodo para abrir novas janelas
+    private void abrirJanela(String fxmlPath, String titulo) {
         try {
-            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("/gui/" + fxmlPath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/" + fxmlPath));
             Parent root = loader.load();
+
             Stage stage = new Stage();
             stage.setTitle(titulo);
             stage.setScene(new Scene(root));
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
+            mostrarAlerta(Alert.AlertType.ERROR, "Erro ao abrir janela",
+                    "Não foi possível carregar o arquivo: " + fxmlPath + "\nErro: " + e.getMessage());
         }
+    }
+
+    private void mostrarAlerta(Alert.AlertType tipo, String titulo, String mensagem) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 
     @FXML
@@ -32,19 +44,19 @@ public class MainController {
 
     @FXML
     public void abrirEncontros() {
-        // Implementar (Tarefa 6 e 7)
-        // abrirJanela("EncontroView.fxml", "Gerenciamento de Encontros");
+        abrirJanela("EncontroView.fxml", "Gerenciamento de Encontros");
     }
 
     @FXML
     public void abrirAniversariantes() {
-        // Implementar (Tarefa 5)
-        // abrirJanela("AniversariantesView.fxml", "Aniversariantes do Mês");
+        abrirJanela("AniversariantesView.fxml", "Aniversariantes do Mês");
     }
 
     @FXML
     public void abrirRelatorios() {
-        // Implementar (Tarefa 9)
-        // abrirJanela("RelatorioView.fxml", "Geração de Relatórios");
+        // Placeholder para a Tarefa 8 (Gerar Relatório)
+        // Se você não for implementar a tela visual, pode colocar a lógica de geração aqui.
+        mostrarAlerta(Alert.AlertType.INFORMATION, "Em Desenvolvimento",
+                "A funcionalidade de geração de relatórios (.txt) ainda será implementada.");
     }
 }
