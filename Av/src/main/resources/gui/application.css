@@ -1,0 +1,101 @@
+/* gui/application.css */
+
+/* --- Configurações Gerais --- */
+.root {
+    -fx-font-family: "Segoe UI", "Roboto", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f4f6f8; /* Fundo cinza bem clarinho */
+}
+
+/* --- Títulos e Labels --- */
+.label {
+    -fx-text-fill: #333333;
+}
+
+/* Classe específica para títulos grandes (use styleClass="titulo" no FXML) */
+.titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 10 0 20 0;
+}
+
+/* --- Campos de Texto e DatePicker --- */
+.text-field, .date-picker .text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #ced4da;
+    -fx-padding: 5;
+}
+
+.text-field:focused, .date-picker:focused .text-field {
+    -fx-border-color: #4a90e2; /* Azul ao clicar */
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(74,144,226,0.2), 5, 0, 0, 0);
+}
+
+/* --- Botões --- */
+.button {
+    -fx-background-color: #4a90e2; /* Azul principal */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 8 15 8 15;
+}
+
+.button:hover {
+    -fx-background-color: #357abd; /* Azul mais escuro ao passar o mouse */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.button:pressed {
+    -fx-background-color: #2a5d8f;
+}
+
+/* Botão específico para ações de perigo/excluir (use styleClass="button-danger" no FXML) */
+.button-danger {
+    -fx-background-color: #e74c3c;
+}
+.button-danger:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* --- Tabela (TableView) --- */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #e9ecef;
+    -fx-background-radius: 5 5 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #495057;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
+/* Efeito zebrado nas linhas (uma branca, uma cinza) */
+.table-row-cell:odd {
+    -fx-background-color: white;
+}
+.table-row-cell:even {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Linha Selecionada */
+.table-row-cell:selected {
+    -fx-background-color: #b3d7ff; /* Azul claro na seleção */
+}
+.table-row-cell:selected .text {
+    -fx-fill: #000000; /* Texto continua preto para leitura */
+}

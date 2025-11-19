@@ -1,10 +1,10 @@
-package fatec.lp.av.dao;
+package dao;
 
-import fatec.lp.av.factory.ConnectionFactory;
-import fatec.lp.av.modelo.Encontro;
-import fatec.lp.av.modelo.Mae;
-import fatec.lp.av.modelo.Responsabilidade;
-import fatec.lp.av.modelo.Servico;
+import factory.ConnectionFactory;
+import modelo.Encontro;
+import modelo.Mae;
+import modelo.Responsabilidade;
+import modelo.Servico;
 
 import java.sql.*;
 import java.time.LocalDate;

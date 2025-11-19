@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gui.MaeController" stylesheets="@application.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 
-</AnchorPane>
+    <GridPane hgap="10" vgap="10">
+        <Label text="Nome:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Telefone:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtTelefone" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Endereço:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="txtEndereco" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Data Nascimento:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <DatePicker fx:id="dpNascimento" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button text="Salvar" onAction="#salvarMae"/>
+        <Button text="Excluir" onAction="#excluirMae"/>
+        <Button text="Limpar" onAction="#limparCampos"/>
+    </HBox>
+
+    <TableView fx:id="tabelaMaes" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colNome" text="Nome" prefWidth="200"/>
+            <TableColumn fx:id="colTelefone" text="Telefone" prefWidth="100"/>
+            <TableColumn fx:id="colNascimento" text="Aniversário" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>

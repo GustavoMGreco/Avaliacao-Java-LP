@@ -1,5 +1,6 @@
-package fatec.lp.av.factory;
+package factory;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -8,9 +9,9 @@ public class ConnectionFactory {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
-    public ConnectionFactory getConnection() {
+    public Connection getConnection() {
         try {
-            return (ConnectionFactory) DriverManager.getConnection(URL, USER, PASSWORD);
+            return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao conectar ao banco de dados: " + e.getMessage(), e);
         }

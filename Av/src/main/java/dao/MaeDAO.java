@@ -1,7 +1,7 @@
-package fatec.lp.av.dao;
+package dao;
 
-import fatec.lp.av.factory.ConnectionFactory;
-import fatec.lp.av.modelo.Mae;
+import factory.ConnectionFactory;
+import modelo.Mae;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

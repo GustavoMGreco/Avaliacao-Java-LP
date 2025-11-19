@@ -1,4 +1,4 @@
-package fatec.lp.av.util;
+package util;
 
 import javafx.stage.Stage;
 
