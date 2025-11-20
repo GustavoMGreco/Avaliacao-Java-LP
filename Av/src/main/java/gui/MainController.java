@@ -44,7 +44,7 @@ public class MainController {
 
     @FXML
     public void abrirEncontros() {
-        abrirJanela("EncontroView.fxml", "Gerenciamento de Encontros");
+        abrirJanela("ListaEncontrosView.fxml", "Gerenciamento de Encontros");
     }
 
     @FXML

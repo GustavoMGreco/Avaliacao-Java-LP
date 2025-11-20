@@ -6,32 +6,27 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EncontroController" stylesheets="@application.css">
     <top>
         <VBox spacing="10" style="-fx-background-color: #e9ecef; -fx-padding: 15;">
-            <Label text="Gerenciamento de Encontros" styleClass="titulo"/>
+            <Label fx:id="lblTitulo" text="Dados do Encontro" styleClass="titulo"/>
 
             <HBox spacing="15" alignment="CENTER_LEFT">
                 <VBox spacing="5">
                     <Label text="Data do Encontro:" style="-fx-font-weight: bold;"/>
-                    <DatePicker fx:id="dpDataEncontro" onAction="#buscarEncontro" prefWidth="150"/>
+                    <DatePicker fx:id="dpDataEncontro" prefWidth="150"/>
                 </VBox>
 
                 <VBox spacing="5">
                     <Label text="Status:" style="-fx-font-weight: bold;"/>
                     <ComboBox fx:id="cbStatus" prefWidth="150"/>
                 </VBox>
-
-                <Button text="Buscar / Carregar" onAction="#buscarEncontro" style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
             </HBox>
-            <Label text="* Selecione uma data para carregar um encontro existente ou iniciar um novo." style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
         </VBox>
     </top>
 
@@ -49,9 +44,8 @@
 
     <bottom>
         <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 1 0 0 0;">
-            <Button text="Limpar Tela" onAction="#limparTela" />
-            <Button text="Excluir Encontro" onAction="#excluirEncontro" styleClass="button-danger"/>
-            <Button text="Salvar Encontro" onAction="#salvarEncontro" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button text="Cancelar" onAction="#fecharJanela"/>
+            <Button text="Salvar" onAction="#salvarEncontro" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;"/>
         </HBox>
     </bottom>
 </BorderPane>
