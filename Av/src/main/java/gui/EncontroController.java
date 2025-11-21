@@ -88,6 +88,7 @@ public class EncontroController {
     }
 
     private void gerarCamposDeServicos() {
+        System.out.println("teste");
         vboxServicos.getChildren().clear();
         mapaControles.clear();
 

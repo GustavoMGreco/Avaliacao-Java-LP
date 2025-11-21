@@ -121,9 +121,9 @@ public class EncontroDAO {
     }
 
     public void remove(int idEncontro, LocalDate dataEncontro) {
-        if (dataEncontro.isBefore(LocalDate.now())) {
-            throw new RuntimeException("Não é permitido excluir fisicamente encontros passados. Use o cancelamento.");
-        }
+        //if (dataEncontro.isBefore(LocalDate.now())) {
+        //    throw new RuntimeException("Não é permitido excluir fisicamente encontros passados. Use o cancelamento.");
+        //}
 
         String sqlDelResp = "DELETE FROM responsabilidade WHERE id_encontro=?";
         String sqlDelEnc = "DELETE FROM encontro WHERE id_encontro=?";

@@ -51,4 +51,11 @@ public class Encontro {
     public void adicionarResponsabilidade(Responsabilidade resp) {
         this.responsabilidades.add(resp);
     }
+
+    @Override
+    public String toString() {
+        // Formata para aparecer no ComboBox assim: "dd/MM/yyyy (Status)"
+        java.time.format.DateTimeFormatter fmt = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return this.dataEncontro.format(fmt) + " - " + this.status;
+    }
 }

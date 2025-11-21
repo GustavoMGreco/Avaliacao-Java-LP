@@ -21,16 +21,19 @@ import java.util.Optional;
 
 public class ListaEncontrosController {
 
-    @FXML private TableView<Encontro> tabelaEncontros;
-    @FXML private TableColumn<Encontro, Integer> colId;
-    @FXML private TableColumn<Encontro, LocalDate> colData;
-    @FXML private TableColumn<Encontro, String> colStatus;
+    @FXML
+    private TableView<Encontro> tabelaEncontros;
+    @FXML
+    private TableColumn<Encontro, LocalDate> colData;
+    @FXML
+    private TableColumn<Encontro, String> colStatus;
 
     private EncontroDAO encontroDAO = new EncontroDAO();
 
+    private final LocalDate dataAtual = LocalDate.now();
+
     @FXML
     public void initialize() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("idEncontro"));
         colData.setCellValueFactory(new PropertyValueFactory<>("dataEncontro"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
@@ -54,9 +57,12 @@ public class ListaEncontrosController {
     public void editarEncontro() {
         Encontro selecionado = tabelaEncontros.getSelectionModel().getSelectedItem();
         if (selecionado != null) {
-            // É preciso buscar o encontro completo (com responsabilidades) do banco
-            Encontro completo = encontroDAO.getEncontroPorData(selecionado.getDataEncontro());
-            abrirFormulario(completo);
+            if (dataAtual.isBefore(selecionado.getDataEncontro())) {
+                abrirFormulario(selecionado);
+            } else {
+                mostrarAlerta(Alert.AlertType.WARNING, "Aviso", "Esse encontro não pode ser editado devido à sua data.");
+            }
+
         } else {
             mostrarAlerta(Alert.AlertType.WARNING, "Aviso", "Selecione um encontro para editar.");
         }
@@ -72,17 +78,17 @@ public class ListaEncontrosController {
 
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Confirmar");
-        confirm.setHeaderText("Deseja excluir/cancelar o encontro de " + selecionado.getDataEncontro() + "?");
+        confirm.setHeaderText("Deseja cancelar o encontro de " + selecionado.getDataEncontro() + "?");
 
         Optional<ButtonType> result = confirm.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
-                if (selecionado.getDataEncontro().isBefore(LocalDate.now())) {
-                    encontroDAO.cancelar(selecionado.getIdEncontro());
-                    mostrarAlerta(Alert.AlertType.INFORMATION, "Info", "Encontro passado foi marcado como Cancelado.");
-                } else {
+                if (dataAtual.isBefore(selecionado.getDataEncontro())) { //CANCELAR ========================================
                     encontroDAO.remove(selecionado.getIdEncontro(), selecionado.getDataEncontro());
-                    mostrarAlerta(Alert.AlertType.INFORMATION, "Info", "Encontro futuro excluído.");
+                    mostrarAlerta(Alert.AlertType.WARNING, "Aviso", "Esse encontro não pode ser cancelado devido à sua data.");
+                } else { //EXCLUIR ========================================
+                    encontroDAO.cancelar(selecionado.getIdEncontro());
+                    mostrarAlerta(Alert.AlertType.INFORMATION, "Info", "Encontro cancelado.");
                 }
                 carregarLista();
             } catch (Exception e) {

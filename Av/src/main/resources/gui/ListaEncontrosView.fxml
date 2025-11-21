@@ -19,12 +19,11 @@
     <HBox spacing="10">
         <Button text="Novo Encontro" onAction="#novoEncontro" style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
         <Button text="Editar Selecionado" onAction="#editarEncontro"/>
-        <Button text="Excluir/Cancelar" onAction="#excluirEncontro" styleClass="button-danger"/>
+        <Button text="Cancelar" onAction="#excluirEncontro" styleClass="button-danger"/>
     </HBox>
 
     <TableView fx:id="tabelaEncontros" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
             <TableColumn fx:id="colData" text="Data" prefWidth="150"/>
             <TableColumn fx:id="colStatus" text="Status" prefWidth="150"/>
         </columns>
