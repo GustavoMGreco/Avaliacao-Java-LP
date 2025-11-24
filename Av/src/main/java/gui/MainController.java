@@ -113,7 +113,13 @@ public class MainController {
                 for (Responsabilidade resp : encontro.getResponsabilidades()) {
                     String nomeServico = resp.getServico().getNome().toUpperCase();
                     String nomeMae = resp.getMae().getNome();
-                    writer.write(nomeServico + ": " + nomeMae);
+                    String descricao = resp.getDescricaoAtividade();
+
+                    if (descricao != null && !descricao.isEmpty()) {
+                        writer.write(nomeServico + ": " + nomeMae + " - Detalhes: " + descricao);
+                    } else {
+                        writer.write(nomeServico + ": " + nomeMae);
+                    }
                     writer.newLine();
                 }
             } else {

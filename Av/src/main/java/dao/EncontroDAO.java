@@ -246,6 +246,9 @@ public class EncontroDAO {
                 encontro.setIdEncontro(rs.getInt("id_encontro"));
                 encontro.setDataEncontro(rs.getDate("data_encontro").toLocalDate());
                 encontro.setStatus(rs.getString("status"));
+
+                encontro.setResponsabilidades(getResponsabilidadesPorEncontro(encontro.getIdEncontro()));
+
                 encontros.add(encontro);
             }
         } catch (SQLException e) {
